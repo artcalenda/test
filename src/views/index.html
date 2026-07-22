@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hostman - The European Cloud for the AI Coding Era">
+  <meta name="theme-color" content="#000000">
+  <title>Hostman - Deploy AI-built apps in 60 seconds</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/modal.css">
+</head>
+<body>
+  <!-- Top Banner -->
+  <div class="top-banner">
+    <div class="banner-content">
+      <span class="banner-text">🎁 Exclusive Offer: Приветственные $20 бонусов от Alex Ziskind (@digitalix)</span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <h1>Hostman</h1>
+        </div>
+        <nav class="nav-menu">
+          <a href="#products" class="nav-link">Products</a>
+          <a href="#resources" class="nav-link">Resources</a>
+          <a href="#marketplace" class="nav-link">Marketplace</a>
+          <a href="#pricing" class="nav-link">Pricing</a>
+        </nav>
+        <div class="auth-buttons">
+          <button class="btn btn-login" id="loginBtn">Log In</button>
+          <button class="btn btn-signup" id="signupBtn">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">✨ Optimized for Cursor • Claude • Bolt • Devin</div>
+        <h1 class="hero-title">The European Cloud for the AI Coding Era</h1>
+        <p class="hero-subtitle">Deploy AI-built apps in 60 seconds. Scale to production on European infrastructure.</p>
+
+        <!-- Promo Card -->
+        <div class="promo-card">
+          <div class="promo-content">
+            <div class="promo-icon">💳</div>
+            <div class="promo-text">
+              <h3>Welcome Bonus</h3>
+              <p>Get <strong>$20</strong> in credits with promo code <code>DIGITALIX20</code></p>
+            </div>
+          </div>
+          <button class="btn btn-promo" id="promoBtn">Activate Bonus</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dashboard Preview -->
+  <section class="dashboard-preview">
+    <div class="container">
+      <h2>Deploy to Your Favorite Framework</h2>
+      <div class="framework-grid">
+        <div class="framework-card">React</div>
+        <div class="framework-card">Next.js</div>
+        <div class="framework-card">Vue</div>
+        <div class="framework-card">Svelte</div>
+        <div class="framework-card">Angular</div>
+        <div class="framework-card">Express</div>
+        <div class="framework-card">Django</div>
+        <div class="framework-card">Rails</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps Section -->
+  <section class="steps">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">✦</div>
+          <h3>Build it</h3>
+          <p>Create your AI-powered application using your favorite framework and tools</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">➤</div>
+          <h3>Push it</h3>
+          <p>Push your code to our Git-integrated platform in seconds</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">⇪</div>
+          <h3>Ship it</h3>
+          <p>Deploy to European servers and scale automatically with demand</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo Modal -->
+  <div class="modal" id="promoModal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModal">×</button>
+      
+      <div class="modal-header">
+        <h2>Activate Your $20 Bonus</h2>
+        <div class="modal-steps">
+          <div class="step-indicator active" data-step="1">1</div>
+          <div class="step-indicator" data-step="2">2</div>
+          <div class="step-indicator" data-step="3">3</div>
+        </div>
+      </div>
+
+      <form class="promo-form" id="promoForm">
+        <!-- Step 1: Card Information -->
+        <div class="form-step active" data-step="1">
+          <h3>Payment Information</h3>
+          <div class="form-group">
+            <label for="cardholderName">Cardholder Name</label>
+            <input 
+              type="text" 
+              id="cardholderName" 
+              name="cardholderName" 
+              placeholder="John Doe" 
+              required
+              autocomplete="cc-name"
+            >
+          </div>
+          <div class="form-group">
+            <label for="cardNumber">Card Number</label>
+            <input 
+              type="text" 
+              id="cardNumber" 
+              name="cardNumber" 
+              placeholder="1234 5678 9012 3456" 
+              required
+              autocomplete="cc-number"
+              maxlength="19"
+            >
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="expiryDate">Expiry Date (MM/YY)</label>
+              <input 
+                type="text" 
+                id="expiryDate" 
+                name="expiryDate" 
+                placeholder="12/25" 
+                required
+                autocomplete="cc-exp"
+                maxlength="5"
+              >
+            </div>
+            <div class="form-group">
+              <label for="cvv">CVV</label>
+              <input 
+                type="text" 
+                id="cvv" 
+                name="cvv" 
+                placeholder="123" 
+                required
+                autocomplete="cc-csc"
+                maxlength="4"
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Review -->
+        <div class="form-step" data-step="2">
+          <h3>Verify Details</h3>
+          <div class="review-card">
+            <div class="review-item">
+              <span class="label">Card Ending:</span>
+              <span class="value" id="reviewCard">••••</span>
+            </div>
+            <div class="review-item">
+              <span class="label">Bonus Amount:</span>
+              <span class="value">$20 USD</span>
+            </div>
+            <div class="review-item">
+              <span class="label">Promo Code:</span>
+              <span class="value">DIGITALIX20</span>
+            </div>
+          </div>
+          <div class="security-info">
+            <span class="security-icon">🔒</span>
+            <p>Your card will be charged $1 for verification and the amount will be refunded immediately.</p>
+          </div>
+        </div>
+
+        <!-- Step 3: Success -->
+        <div class="form-step" data-step="3">
+          <div class="success-container">
+            <div class="success-icon">✓</div>
+            <h3>Bonus Activated!</h3>
+            <p>Your $20 bonus has been successfully added to your account.</p>
+            <div class="success-details">
+              <p><strong>Promo Code:</strong> DIGITALIX20</p>
+              <p><strong>Bonus Amount:</strong> $20 USD</p>
+              <p><strong>Status:</strong> Active</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="prevBtn" style="display: none;">Back</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <p>Processing...</p>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/card-input.js"></script>
+  <script src="/js/modal.js"></script>
+</body>
+</html>
