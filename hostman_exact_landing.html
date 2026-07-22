@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostman — European Cloud for AI Coding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #FAFAFA;
+            --bg-card: #FFFFFF;
+            --text-dark: #0F172A;
+            --text-muted: #64748B;
+            --primary-blue: #2563EB;
+            --primary-hover: #1D4ED8;
+            --border-light: #E2E8F0;
+            --modal-bg: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Creator Bar */
+        .creator-bar {
+            background: #000000;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 0.88rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .creator-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 8%;
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 800;
+            font-size: 1.35rem;
+            color: #0F172A;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 28px;
+            height: 28px;
+            background: #2563EB;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 900;
+            font-size: 16px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #334155;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn-secondary {
+            background: #F1F5F9;
+            color: #0F172A;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn-header {
+            background: #2563EB;
+            color: #FFFFFF;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 50px 20px 40px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .optimized-tag {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1.2px;
+            line-height: 1.1;
+            color: #0F172A;
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        /* Exclusive Offer Banner Card */
+        .offer-box {
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            border: 1px solid #BFDBFE;
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 40px;
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .offer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1E40AF;
+            margin-bottom: 6px;
+        }
+
+        .offer-desc {
+            font-size: 0.95rem;
+            color: #1E3A8A;
+            margin-bottom: 18px;
+        }
+
+        .btn-cta {
+            background: #2563EB;
+            color: #FFFFFF;
+            font-size: 1.05rem;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            transition: all 0.2s;
+        }
+
+        .btn-cta:hover {
+            background: #1D4ED8;
+            transform: translateY(-1px);
+        }
+
+        /* Mockup Frame */
+        .mockup-container {
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            background: #000000;
+            border-radius: 20px;
+            padding: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .mockup-inner {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: left;
+            display: flex;
+            gap: 20px;
+        }
+
+        .mockup-sidebar {
+            width: 200px;
+            border-right: 1px solid #F1F5F9;
+            padding-right: 15px;
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        .mockup-sidebar div {
+            padding: 8px 12px;
+            margin-bottom: 4px;
+            border-radius: 6px;
+        }
+
+        .mockup-sidebar div.active {
+            background: #EFF6FF;
+            color: #2563EB;
+            font-weight: 600;
+        }
+
+        .mockup-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .framework-card {
+            border: 1px solid #E2E8F0;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 3 Steps Section */
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto 80px;
+            text-align: left;
+        }
+
+        .step-col h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-col p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-card {
+            background: #FFFFFF;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 500px;
+            padding: 36px;
+            position: relative;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #94A3B8;
+            cursor: pointer;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-header h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #0F172A;
+            margin-bottom: 6px;
+        }
+
+        .modal-header p {
+            font-size: 0.9rem;
+            color: #64748B;
+        }
+
+        /* Form Steps Indicator */
+        .modal-steps {
+            background: #F8FAFC;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .modal-step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .modal-step-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .step-badge {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #2563EB;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step-text h5 {
+            font-size: 0.9rem;
+            color: #0F172A;
+            font-weight: 600;
+        }
+
+        .step-text p {
+            font-size: 0.8rem;
+            color: #64748B;
+        }
+
+        /* Card Input Form */
+        .card-box {
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 20px;
+            background: #FFFFFF;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #CBD5E1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: 'JetBrains Mono', monospace;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: #2563EB;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .notice-box {
+            background: #F0FDF4;
+            border: 1px solid #BBF7D0;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 14px;
+            font-size: 0.8rem;
+            color: #166534;
+            line-height: 1.4;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #2563EB;
+            color: #FFFFFF;
+            padding: 14px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            background: #1D4ED8;
+        }
+
+        /* Success View */
+        .success-box {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .success-icon {
+            width: 56px;
+            height: 56px;
+            background: #DCFCE7;
+            color: #16A34A;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Creator Banner -->
+    <div class="creator-bar">
+        <span class="creator-badge">Exclusive Offer</span>
+        <span>Приветственные $20 бонусов от <strong>Alex Ziskind (@digitalix)</strong></span>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-icon">H</div>
+            <span>Hostman</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Resources</a></li>
+            <li><a href="#">Marketplace</a></li>
+            <li><a href="#">Pricing</a></li>
+        </ul>
+        <div class="header-actions">
+            <button class="btn-secondary" onclick="openModal()">Log In</button>
+            <button class="btn-header" onclick="openModal()">Sign Up</button>
+        </div>
+    </header>
+
+    <!-- Main Hero -->
+    <main class="hero">
+        <div class="optimized-tag">
+            Optimized for <strong>Cursor</strong> • <strong>Claude</strong> • <strong>Bolt</strong> • <strong>Devin</strong>
+        </div>
+
+        <h1 class="hero-title">The European Cloud<br>for the AI Coding Era</h1>
+        <p class="hero-subtitle">
+            Deploy AI-built apps in 60 seconds. Scale to production on European infrastructure.
+        </p>
+
+        <!-- Exclusive Blogger Offer Card -->
+        <div class="offer-box">
+            <div class="offer-title">Спецпредложение от Alex Ziskind</div>
+            <div class="offer-desc">Используй промокод <strong>DIGITALIX20</strong> и получи $20 бонусов на счет при регистрации</div>
+            <button class="btn-cta" onclick="openModal()">Использовать промокод на $20</button>
+        </div>
+
+        <!-- UI Mockup Screen -->
+        <div class="mockup-container">
+            <div class="mockup-inner">
+                <div class="mockup-sidebar">
+                    <div class="active">My First Project</div>
+                    <div>AI Agents</div>
+                    <div>App Platform</div>
+                    <div>Cloud Servers</div>
+                    <div>Databases</div>
+                    <div>Billing</div>
+                </div>
+                <div class="mockup-grid">
+                    <div class="framework-card">Angular</div>
+                    <div class="framework-card">Ember</div>
+                    <div class="framework-card">Next.js</div>
+                    <div class="framework-card">Nuxt</div>
+                    <div class="framework-card">Preact</div>
+                    <div class="framework-card">React</div>
+                    <div class="framework-card">Svelte</div>
+                    <div class="framework-card">Vue</div>
+                    <div class="framework-card">Other</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="steps-container">
+            <div class="step-col">
+                <h4>✦ Build it</h4>
+                <p>Build your app in Cursor, Claude Code, Codex, Devin, Bolt—or any IDE you call home.</p>
+            </div>
+            <div class="step-col">
+                <h4>➤ Push it</h4>
+                <p>One commit to GitHub, GitLab, or Bitbucket is all it takes to trigger a deploy.</p>
+            </div>
+            <div class="step-col">
+                <h4>⇪ Ship it</h4>
+                <p>You pick the stack—Hostman builds, issues SSL, and deploys your app. Zero config.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Popup Window -->
+    <div class="modal-overlay" id="promoModal">
+        <div class="modal-card">
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+
+            <!-- Form State -->
+            <div id="modalForm">
+                <div class="modal-header">
+                    <h2>Получить $20 бонусов</h2>
+                    <p>Эксклюзивный офер от Alex Ziskind (@digitalix)</p>
+                </div>
+
+                <!-- Registration Steps -->
+                <div class="modal-steps">
+                    <div class="modal-step-item">
+                        <div class="step-badge">1</div>
+                        <div class="step-text">
+                            <h5>Войдите или зарегистрируйтесь</h5>
+                            <p>Зайдите в свой личный профиль Hostman</p>
+                        </div>
+                    </div>
+                    <div class="modal-step-item">
+                        <div class="step-badge">2</div>
+                        <div class="step-text">
+                            <h5>Привяжите банковскую карту</h5>
+                            <p>Для подтверждения уникальности аккаунта</p>
+                        </div>
+                    </div>
+                    <div class="modal-step-item">
+                        <div class="step-badge">3</div>
+                        <div class="step-text">
+                            <h5>Получите $20 на баланс</h5>
+                            <p>Бонусы активируются автоматически</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card Form -->
+                <div class="card-box">
+                    <form onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label class="form-label">Номер карты</label>
+                            <input type="text" class="form-input" placeholder="0000 0000 0000 0000" maxlength="19" required oninput="formatCard(this)">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label">Срок (ММ/ГГ)</label>
+                                <input type="text" class="form-input" placeholder="MM/YY" maxlength="5" required oninput="formatExp(this)">
+                            </div>
+                            <div class="form-group" style="flex: 1;">
+                                <label class="form-label">CVC / CVV</label>
+                                <input type="password" class="form-input" placeholder="•••" maxlength="4" required>
+                            </div>
+                        </div>
+
+                        <!-- Security Note -->
+                        <div class="notice-box">
+                            <strong>🔒 Без скрытых списаний:</strong> Никаких списаний без вашего ведома не производится. Для проверки карты временно списывается и сразу возвращается $1.
+                        </div>
+
+                        <button type="submit" class="btn-submit">Привязать карту и активировать $20</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Success State -->
+            <div class="success-box" id="modalSuccess">
+                <div class="success-icon">✓</div>
+                <h3 style="font-size: 1.3rem; margin-bottom: 8px;">Карта успешно привязана!</h3>
+                <p style="color: #64748B; font-size: 0.9rem; margin-bottom: 20px;">
+                    Вам зачислено <strong>$20 бонусов</strong> от Alex Ziskind. Приступайте к развертыванию ваших проектов!
+                </p>
+                <button class="btn-submit" onclick="closeModal()">Перейти в консоль</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('promoModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('promoModal').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('modalForm').style.style.display = 'block';
+                document.getElementById('modalSuccess').style.display = 'none';
+            }, 300);
+        }
+
+        function formatCard(input) {
+            let v = input.value.replace(/\D/g, '');
+            let res = '';
+            for (let i = 0; i < v.length; i++) {
+                if (i > 0 && i % 4 === 0) res += ' ';
+                res += v[i];
+            }
+            input.value = res;
+        }
+
+        function formatExp(input) {
+            let v = input.value.replace(/\D/g, '');
+            if (value = v.length >= 2) {
+                input.value = v.substring(0, 2) + '/' + v.substring(2, 4);
+            } else {
+                input.value = v;
+            }
+        }
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            document.getElementById('modalForm').style.display = 'none';
+            document.getElementById('modalSuccess').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
